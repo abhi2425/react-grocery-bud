@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./Form.css";
+import "./Basket.css";
 import Alert from "../Alert/Alert";
 import ItemContainer from "../ItemsContainer/ItemContainer";
 
-const Form = () => {
+const Basket = () => {
   const [itemName, setItemName] = useState("");
   const [groceryItems, setGroceryItems] = useState([]);
   const [alert, setAlert] = useState({
@@ -16,8 +16,7 @@ const Form = () => {
 
   const submitHandler = (event) => {
     if (!(itemName.length < 3) && !editingMode) {
-      const newItem = { itemName };
-      setGroceryItems([...groceryItems, newItem]);
+      setGroceryItems([...groceryItems, { itemName }])
       setAlert({
         showAlert: true,
         type: "success",
@@ -133,4 +132,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default Basket;

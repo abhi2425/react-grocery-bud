@@ -7,12 +7,12 @@ const Item = ({ itemName, deleteItem, editItem }) => {
     <article className="item">
       <p>{itemName}</p>
       <div className="icons">
-        <button className="icons-- edit" onClick={editItem}>
+        <i className="icons-- edit" onClick={editItem}>
           <FaEdit />
-        </button>
-        <button className="icons-- delete" onClick={deleteItem}>
+        </i>
+        <i className="icons-- delete" onClick={deleteItem}>
           <FaTrash />
-        </button>
+        </i>
       </div>
     </article>
   );

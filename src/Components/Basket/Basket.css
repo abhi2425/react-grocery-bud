@@ -1,6 +1,7 @@
 .groceryForm {
   margin-bottom: 2.5rem;
   display: flex;
+  height: 4.2rem;
   width: 100%;
 }
 .text {
@@ -9,19 +10,24 @@
   font-size: 2rem;
   border-radius: 0.3rem;
   border: none;
-  padding: 0.2rem 2rem;
+  padding: 0.7rem 2.5rem;
   width: 100%;
+  transition: all 0.1s linear;
+}
+.text:focus {
+  outline: none;
+  border-bottom: 0.2rem solid #25c9f1;
 }
 .submit {
   font-size: 1.8rem;
   border: none;
   border-radius: 0.3rem;
-  background-color: skyblue;
-  color: rgb(54, 54, 54);
+  background-color: #25c9f1;
+  color: rgb(241, 240, 240);
   transition: all 0.5s linear;
   cursor: pointer;
   padding: 0.5rem 1.2rem;
 }
 .submit:hover {
-  background-color: rgb(56, 189, 241);
+  background-color: rgb(46, 152, 194);
 }
