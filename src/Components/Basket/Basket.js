@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./Basket.css";
 import Alert from "../Alert/Alert";
 import ItemContainer from "../ItemsContainer/ItemContainer";
+import { getItemsFromLocalStorage } from "../../utils/localStorage";
 
 const Basket = () => {
   const [itemName, setItemName] = useState("");
-  const [groceryItems, setGroceryItems] = useState([]);
+  const [groceryItems, setGroceryItems] = useState(() => getItemsFromLocalStorage("groceryItems"));
   const [alert, setAlert] = useState({
     showAlert: false,
     msg: "",
@@ -17,6 +18,7 @@ const Basket = () => {
   const submitHandler = (event) => {
     if (!(itemName.length < 3) && !editingMode) {
       setGroceryItems([...groceryItems, { itemName }])
+      localStorage.setItem('groceryItems', JSON.stringify([...groceryItems, { itemName }]))
       setAlert({
         showAlert: true,
         type: "success",
@@ -31,6 +33,7 @@ const Basket = () => {
         return item;
       });
       setGroceryItems(editedItem); //editedItem will be any array coz of map() method
+      localStorage.setItem('groceryItems', JSON.stringify(editedItem))
       setAlert({
         showAlert: true,
         msg: "Value Changed!",
@@ -50,6 +53,7 @@ const Basket = () => {
 
   const clearAllItemHandler = () => {
     setGroceryItems([]);
+    localStorage.clear()
     setAlert({
       showAlert: true,
       type: "danger",
@@ -60,6 +64,7 @@ const Basket = () => {
   const deleteItemHandler = (id) => {
     const updatedGroceryItems = groceryItems.filter((_, index) => index !== id);
     setGroceryItems(updatedGroceryItems);
+    localStorage.setItem('groceryItems', JSON.stringify(updatedGroceryItems))
     setAlert({
       showAlert: true,
       type: "danger",
