@@ -68,7 +68,7 @@ const Basket = () => {
     setAlert({
       showAlert: true,
       type: "danger",
-      msg: "Item removed From List",
+      msg: `${groceryItems[id].itemName} removed From List`,
     });
   };
 
